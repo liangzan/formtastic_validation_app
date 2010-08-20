@@ -8,8 +8,9 @@
     <%= stylesheet_link_tag 'formtastic_changes' %>
 
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'livevalidation.min' %>
   </head>
-  <body>
+  <body onload="initialize()">
     <%= yield %>
   </body>
 </html>
