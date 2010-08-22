@@ -50,28 +50,27 @@ function extractValidationKey(key) {
 }
 
 function bindInputElements(element, validation, options) {
-    alert(element.id + ":" + validation);
     var elementValidation = new LiveValidation(element);
     
     switch(validation) {
     case "validates_acceptance_of":
-	break;
-    case "validates_associated":
-	break;
-    case "validates_confirmation_of":
+	elementValidation.add(Validate.Acceptance, {failureMessage: options["message"]});
 	break;
     case "validates_confirmation_of":
-	break;
-    case "validates_each":
+	elementValidation.add(Validate.Confirmation, {match: options[""], failureMessage: options["message"]});
 	break;
     case "validates_exclusion_of":
+	elementValidation.add(Validate.Exclusion, {within: options["in"], allowNull: options["allow_nil"], failureMessage: options["message"]});
 	break;
     case "validates_format_of":
 	elementValidation.add(Validate.Format, {pattern: new RegExp(options["with"]), failureMessage: options["message"]});
 	break;
     case "validates_inclusion_of":
+	elementValidation.add(Validate.Inclusion, {within: options["with"], allowNull: options["allow_nil"], failureMessage: options["message"]});
 	break;
+    case "validates_size_of":
     case "validates_length_of":
+	elementValidation.add(Validate.Length, {is: options["is"], minimum: options["minimum"], maximum: options["maximum"], wrongLengthMessage: options["wrong_length"], tooShortMessage: options["too_short"], tooLongMessage: options["too_long"]});
 	break;
     case "validates_numericality_of":
 	elementValidation.add(Validate.Numericality, {is: options["equal_to"], minimum: options["greater_than_or_equal_to"], maximum: options["less_than_or_equal_to"], onlyinteger: options["only_integer"], failureMessage: options["message"]});
@@ -79,9 +78,11 @@ function bindInputElements(element, validation, options) {
     case "validates_presence_of":
 	elementValidation.add(Validate.Presence, {failureMessage: options["message"]});
 	break;
-    case "validates_size_of":
-	break;
     case "validates_uniqueness_of":
+	break;
+    case "validates_each":
+	break;
+    case "validates_associated":
 	break;
     }
 }
