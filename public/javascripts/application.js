@@ -8,11 +8,17 @@
  */
 function initialize() {
     var textInputs = selectInputElements();
-    var validationType, validationOptions;
+    var validations, validationTypes, validationOptions;
     for (var i = 0; i < textInputs.length; i++) {
-	validationOptions = getValidationAttributes(textInputs[i]);
-	validationType = textInputs[i].getAttribute("validation");
-	bindInputElements(textInputs[i], validationType, validationOptions);
+	alert(i);
+	validations = textInputs[i].getAttribute("validation");
+	validationTypes = validations.split(" ");
+	for (var j = 0; j < validationTypes.length; j++) {
+	    validationOptions = getValidationAttributes(textInputs[i]);
+	    //alert("validationOptions:" + validationOptions);
+	    //alert("validationType:" + validationTypes[j]);
+	    bindInputElements(textInputs[i], validationTypes[j], validationOptions);
+	}
     }
 }
 
@@ -22,11 +28,23 @@ function selectInputElements() {
     for (var i = 0; i < inputElements.length; i++) {
 	var element = inputElements[i];
 	var inputType = element.getAttribute("type");
-	if (inputType == "text") {
+	if (isValidInputType(inputType)) {
 	    textInputs.push(inputElements[i]);
 	}
     }
     return textInputs;    
+}
+
+function isValidInputType(type) {
+    switch(type) {
+    case "text":
+    case "password":
+    case "radio":
+    case "checkbox":
+	return true;
+    default:
+	return false;
+    }
 }
 
 function getValidationAttributes(element) {
@@ -49,24 +67,41 @@ function extractValidationKey(key) {
     return result != null ? result[1] : null;
 }
 
+
+function extractFormatRegex(format) {
+    //(?-mix:some_regex)
+    var formatRegex = /\(\?-mix:(.*)\)/;
+    var result = format.match(formatRegex);
+    return result != null ? result[1] : null;
+}
+
+
+function confirmationID(element) {
+    var elementID = element.getAttribute("id");
+    return elementID + "_confirmation";
+}
+
 function bindInputElements(element, validation, options) {
     var elementValidation = new LiveValidation(element);
+    var formatRegex;
     
     switch(validation) {
     case "validates_acceptance_of":
+	alert("running acceptance");
 	elementValidation.add(Validate.Acceptance, {failureMessage: options["message"]});
 	break;
     case "validates_confirmation_of":
-	elementValidation.add(Validate.Confirmation, {match: options[""], failureMessage: options["message"]});
+	elementValidation.add(Validate.Confirmation, {match: confirmationID(element), failureMessage: options["message"]});
 	break;
     case "validates_exclusion_of":
 	elementValidation.add(Validate.Exclusion, {within: options["in"], allowNull: options["allow_nil"], failureMessage: options["message"]});
 	break;
     case "validates_format_of":
-	elementValidation.add(Validate.Format, {pattern: new RegExp(options["with"]), failureMessage: options["message"]});
+	formatRegex = extractFormatRegex(options["with"]);
+	elementValidation.add(Validate.Format, {pattern: new RegExp(formatRegex), failureMessage: options["message"]});
 	break;
     case "validates_inclusion_of":
-	elementValidation.add(Validate.Inclusion, {within: options["with"], allowNull: options["allow_nil"], failureMessage: options["message"]});
+	elementValidation.add(Validate.Inclusion, {within: options["in"], allowNull: options["allow_nil"], failureMessage: options["message"]});
 	break;
     case "validates_size_of":
     case "validates_length_of":
@@ -77,12 +112,6 @@ function bindInputElements(element, validation, options) {
 	break;
     case "validates_presence_of":
 	elementValidation.add(Validate.Presence, {failureMessage: options["message"]});
-	break;
-    case "validates_uniqueness_of":
-	break;
-    case "validates_each":
-	break;
-    case "validates_associated":
 	break;
     }
 }
