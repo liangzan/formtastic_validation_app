@@ -68,8 +68,7 @@ function extractValidationKey(key) {
 
 
 function extractFormatRegex(format) {
-    //(?-mix:some_regex)
-    var formatRegex = /\(\?-mix:(.*)\)/;
+    var formatRegex = /^\/(.*)\/$/;
     var result = format.match(formatRegex);
     return result != null ? result[1] : null;
 }
