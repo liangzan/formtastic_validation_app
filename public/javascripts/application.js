@@ -10,14 +10,13 @@ function initialize() {
     var textInputs = selectInputElements();
     var validations, validationTypes, validationOptions;
     for (var i = 0; i < textInputs.length; i++) {
-	//alert(i);
 	validations = textInputs[i].getAttribute("validation");
-	validationTypes = validations.split(" ");
-	for (var j = 0; j < validationTypes.length; j++) {
-	    validationOptions = getValidationAttributes(textInputs[i]);
-	    //alert("validationOptions:" + validationOptions);
-	    //alert("validationType:" + validationTypes[j]);
-	    bindInputElements(textInputs[i], validationTypes[j], validationOptions);
+	if (validations != null) {
+	    validationTypes = validations.split(" ");
+	    for (var j = 0; j < validationTypes.length; j++) {
+		validationOptions = getValidationAttributes(textInputs[i]);
+		bindInputElements(textInputs[i], validationTypes[j], validationOptions);
+	    }
 	}
     }
 }
