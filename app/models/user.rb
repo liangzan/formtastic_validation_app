@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates_acceptance_of :terms_of_service
   validates_confirmation_of :password
   validates_numericality_of :age, :only_integer => true, :minimum => 21, :message => "Only 21 and above are allowed"
-  validates_format_of :website, :with => /www.something.com/
+  validates_format_of :website, :with => /^www.something.com$/
   validates_inclusion_of :gender, :in => ["male", "female"]
   validates_exclusion_of :address, :in => ["cafe", "bar"]
   validates_presence_of :company
