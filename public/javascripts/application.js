@@ -10,7 +10,7 @@ function initialize() {
     var textInputs = selectInputElements();
     var validations, validationTypes, validationOptions;
     for (var i = 0; i < textInputs.length; i++) {
-	alert(i);
+	//alert(i);
 	validations = textInputs[i].getAttribute("validation");
 	validationTypes = validations.split(" ");
 	for (var j = 0; j < validationTypes.length; j++) {
@@ -83,15 +83,15 @@ function confirmationID(element) {
 
 function bindInputElements(element, validation, options) {
     var elementValidation = new LiveValidation(element);
-    var formatRegex;
+    var formatRegex, confirmationElement;
     
     switch(validation) {
     case "validates_acceptance_of":
-	alert("running acceptance");
 	elementValidation.add(Validate.Acceptance, {failureMessage: options["message"]});
 	break;
     case "validates_confirmation_of":
-	elementValidation.add(Validate.Confirmation, {match: confirmationID(element), failureMessage: options["message"]});
+	confirmationElement = new LiveValidation(confirmationID(element));
+	confirmationElement.add(Validate.Confirmation, {match: element, failureMessage: options["message"]});
 	break;
     case "validates_exclusion_of":
 	elementValidation.add(Validate.Exclusion, {within: options["in"], allowNull: options["allow_nil"], failureMessage: options["message"]});
