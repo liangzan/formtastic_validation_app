@@ -92,14 +92,14 @@ function bindInputElements(element, validation, options) {
 	confirmationElement.add(Validate.Confirmation, {match: element, failureMessage: options["message"]});
 	break;
     case "validates_exclusion_of":
-	elementValidation.add(Validate.Exclusion, {within: options["in"], allowNull: options["allow_nil"], failureMessage: options["message"]});
+	elementValidation.add(Validate.Exclusion, {within: JSON.parse(options["in"]), allowNull: options["allow_nil"], failureMessage: options["message"]});
 	break;
     case "validates_format_of":
 	formatRegex = extractFormatRegex(options["with"]);
 	elementValidation.add(Validate.Format, {pattern: new RegExp(formatRegex), failureMessage: options["message"]});
 	break;
     case "validates_inclusion_of":
-	elementValidation.add(Validate.Inclusion, {within: options["in"], allowNull: options["allow_nil"], failureMessage: options["message"]});
+	elementValidation.add(Validate.Inclusion, {within: JSON.parse(options["in"]), allowNull: options["allow_nil"], failureMessage: options["message"]});
 	break;
     case "validates_size_of":
     case "validates_length_of":
