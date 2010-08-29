@@ -22,7 +22,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'formtastic', :source  => GEMCUTTER_GEM_SRC, :version => '1.0.0'
-  config.gem 'validation_reflection', :source  => GEMCUTTER_GEM_SRC, :version => '0.3.8'
+  config.gem 'liangzan-validation_reflection', :lib => 'validation_reflection', :source  => GEMCUTTER_GEM_SRC, :version => '0.3.9'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
