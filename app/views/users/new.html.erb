@@ -1,17 +1,17 @@
-<%- semantic_form_for @user, :url => users_path(@user), :html => {:method => :post} do |f| %>
+<%- semantic_form_for @user, :url => users_path, :html => {:method => :post} do |f| %>
   <%- f.inputs :name => "User" do %>
     <%= f.input :name %>
     <%= f.input :email %>
     <%= f.input :mobile %>
-    <%= f.input :age %>
-    <%= f.input :gender %>
     <%= f.input :address %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
+    <%= f.input :gender %>
+    <%= f.input :age %>
     <%= f.input :website %>
     <%= f.input :company %>
     <%= f.input :title %>
-    <%= f.input :terms_of_service %>
+    <%= f.input :terms_of_service, :as => :boolean %>
   <%- end %>
 
   <%- f.buttons do %>

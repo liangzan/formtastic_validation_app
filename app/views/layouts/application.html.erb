@@ -16,6 +16,10 @@
     </script>
   </head>
   <body onload="initialize()">
-    <%= yield %>
+    <div id="flashes">
+      <%= flash[:notice] %>
+      <%= flash[:error] %>
+    </div>
+    <div><%= yield %></div>
   </body>
 </html>
