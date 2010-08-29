@@ -11,7 +11,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :website
       t.string    :company  #size of
       t.string    :title    #presence, inclusion
-      t.boolean   :terms_of_service, :default => false #acceptance
     end
   end
 

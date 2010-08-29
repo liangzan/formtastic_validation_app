@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20100812133702) do
     t.string  "website"
     t.string  "company"
     t.string  "title"
-    t.boolean "terms_of_service", :default => false
   end
 
 end
