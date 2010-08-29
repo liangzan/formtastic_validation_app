@@ -15,14 +15,14 @@ ActiveRecord::Schema.define(:version => 20100812133702) do
     t.string  "name"
     t.string  "email"
     t.integer "mobile"
-    t.boolean "terms_of_service", :default => false
+    t.string  "address"
     t.string  "password"
+    t.string  "gender"
     t.integer "age"
     t.string  "website"
-    t.string  "gender"
-    t.string  "address"
     t.string  "company"
     t.string  "title"
+    t.boolean "terms_of_service", :default => false
   end
 
 end
