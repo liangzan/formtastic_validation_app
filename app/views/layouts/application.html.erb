@@ -6,9 +6,14 @@
 
     <%= stylesheet_link_tag 'formtastic' %>
     <%= stylesheet_link_tag 'formtastic_changes' %>
-
-    <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'livevalidation.min' %>
+    <%= javascript_include_tag 'formtastic_validation' %>
+    <script type="text/javascript">
+      function initialize() {
+          var formtasticValidation = new FormtasticValidation;
+          formtasticValidation.initialize();
+      }
+    </script>
   </head>
   <body onload="initialize()">
     <%= yield %>
