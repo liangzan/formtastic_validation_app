@@ -1,3 +1,5 @@
+<h1>New user</h1>
+
 <%- semantic_form_for @user, :url => users_path, :html => {:method => :post} do |f| %>
   <%- f.inputs :name => "User" do %>
     <%= f.input :name %>

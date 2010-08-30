@@ -35,5 +35,7 @@ acceptance:
   username: fv_admin
   password: fv_admin
 
-cucumber:
+cucumber: &CUCUMBER
   <<: *test
+culerity:
+  <<: *CUCUMBER
