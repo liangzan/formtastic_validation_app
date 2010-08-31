@@ -21,8 +21,9 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'formtastic', :source  => GEMCUTTER_GEM_SRC, :version => '1.0.0'
   config.gem 'liangzan-validation_reflection', :lib => 'validation_reflection', :source  => GEMCUTTER_GEM_SRC, :version => '0.3.9'
+  config.gem 'formtastic', :source  => GEMCUTTER_GEM_SRC, :version => '1.0.0'
+  config.gem 'formtastic_validation', :version => '0.1.0'
   config.gem 'cucumber', :source  => GEMCUTTER_GEM_SRC, :version => '0.8.5'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
@@ -44,3 +45,5 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+
