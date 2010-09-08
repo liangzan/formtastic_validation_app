@@ -8,7 +8,7 @@ Formtastic validation should be able to validate exclusion
     Given I am at the new user form
     When I fill in "Home street" for "user_address"
     And I wait for the AJAX call to finish
-    Then I should see "Thankyou!" validation message for "user_address"
+    Then I should see "Thank you!" validation message for "user_address"
 
   Scenario: Successful validation of invalid fields
     Given I am at the new user form

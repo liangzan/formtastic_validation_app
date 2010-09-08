@@ -8,7 +8,7 @@ Formtastic validation should be able to validate inclusion
     Given I am at the new user form
     When I fill in "male" for "user_gender"
     And I wait for the AJAX call to finish
-    Then I should see "Thankyou!" validation message for "user_gender"
+    Then I should see "Thank you!" validation message for "user_gender"
 
   Scenario: Successful validation of invalid fields
     Given I am at the new user form

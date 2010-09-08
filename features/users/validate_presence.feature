@@ -8,7 +8,7 @@ Formtastic validation should be able to validate presence
     Given I am at the new user form
     When I fill in "Kilgore Trout" for "user_name"
     And I wait for the AJAX call to finish
-    Then I should see "Thankyou!" validation message for "user_name"
+    Then I should see "Thank you!" validation message for "user_name"
 
   Scenario: Successful validation of invalid fields
     Given I am at the new user form

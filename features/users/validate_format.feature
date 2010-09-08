@@ -8,7 +8,7 @@ Formtastic validation should be able to validate format
     Given I am at the new user form
     When I fill in "me@email.com" for "user_email"
     And I wait for the AJAX call to finish
-    Then I should see "Thankyou!" validation message for "user_email"
+    Then I should see "Thank you!" validation message for "user_email"
 
   Scenario: Successful validation of invalid fields
     Given I am at the new user form

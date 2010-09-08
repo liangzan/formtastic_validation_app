@@ -8,7 +8,7 @@ Formtastic validation should be able to validate size
     Given I am at the new user form
     When I fill in "12345" for "user_company"
     And I wait for the AJAX call to finish
-    Then I should see "Thankyou!" validation message for "user_company"
+    Then I should see "Thank you!" validation message for "user_company"
 
   Scenario: Successful validation of invalid fields
     Given I am at the new user form
