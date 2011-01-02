@@ -1,5 +1,7 @@
 require 'culerity'
 
+Culerity.jruby_invocation = File.expand_path("~/.rvm/bin/celerity_jruby")
+
 Before do
   $rails_server_pid ||= Culerity::run_rails(:environment => 'acceptance', :port => 3001)
   $server ||= Culerity::run_server

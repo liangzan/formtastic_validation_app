@@ -25,7 +25,7 @@ config.gem 'cucumber-rails',   :lib => false, :version => '>=0.3.2' unless File.
 config.gem 'database_cleaner', :lib => false, :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
 config.gem 'rspec',            :lib => false, :version => '>=1.3.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
 config.gem 'rspec-rails',      :lib => false, :version => '>=1.3.2' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
-config.gem 'culerity',         :lib => false, :version => '>=0.2.10' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
+config.gem 'culerity',         :lib => false, :version => '>=0.2.12' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
 
 config.after_initialize do
   require 'culerity/persistent_delivery'
